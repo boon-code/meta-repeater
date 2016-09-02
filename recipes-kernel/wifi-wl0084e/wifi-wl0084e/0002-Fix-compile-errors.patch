@@ -1,0 +1,48 @@
+From 91a5bb5fe6d4f584a399c45b5a449fa9bcd5fe54 Mon Sep 17 00:00:00 2001
+From: Manuel Huber <Manuel.h87@gmail.com>
+Date: Mon, 29 Aug 2016 23:20:23 +0200
+Subject: [PATCH 2/3] Fix compile errors
+
+---
+ core/rtw_debug.c           | 2 +-
+ os_dep/linux/rtw_android.c | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/core/rtw_debug.c b/core/rtw_debug.c
+index ba3cdb2..e5d404a 100644
+--- a/core/rtw_debug.c
++++ b/core/rtw_debug.c
+@@ -63,7 +63,7 @@ u32 GlobalDebugLevel = _drv_err_;
+ void dump_drv_version(void *sel)
+ {
+ 	DBG_871X_SEL_NL(sel, "%s %s\n", DRV_NAME, DRIVERVERSION);
+-	DBG_871X_SEL_NL(sel, "build time: %s %s\n", __DATE__, __TIME__);
++//	DBG_871X_SEL_NL(sel, "build time: %s %s\n", __DATE__, __TIME__);
+ }
+ 
+ void dump_log_level(void *sel)
+diff --git a/os_dep/linux/rtw_android.c b/os_dep/linux/rtw_android.c
+index a807602..655bfcf 100644
+--- a/os_dep/linux/rtw_android.c
++++ b/os_dep/linux/rtw_android.c
+@@ -38,6 +38,8 @@
+ #include <linux/irq.h>
+ #endif
+ 
++#include <linux/string.h>
++
+ extern void macstr2num(u8 *dst, u8 *src);
+ 
+ const char *android_wifi_cmd_str[ANDROID_WIFI_CMD_MAX] = {
+@@ -286,7 +288,7 @@ int rtw_android_cmdstr_to_num(char *cmdstr)
+ {
+ 	int cmd_num;
+ 	for(cmd_num=0 ; cmd_num<ANDROID_WIFI_CMD_MAX; cmd_num++)
+-		if(0 == strnicmp(cmdstr , android_wifi_cmd_str[cmd_num], strlen(android_wifi_cmd_str[cmd_num])) )
++		if(0 == strncasecmp(cmdstr , android_wifi_cmd_str[cmd_num], strlen(android_wifi_cmd_str[cmd_num])) )
+ 			break;
+ 
+ 	return cmd_num;
+-- 
+1.9.1
+

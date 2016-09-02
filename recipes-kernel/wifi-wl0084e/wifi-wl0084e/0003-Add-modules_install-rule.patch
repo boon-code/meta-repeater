@@ -1,0 +1,26 @@
+From 76358b30940ee0f9bda2e7016dbca4bedeeb5676 Mon Sep 17 00:00:00 2001
+From: Manuel Huber <Manuel.h87@gmail.com>
+Date: Mon, 29 Aug 2016 23:34:53 +0200
+Subject: [PATCH 3/3] Add modules_install rule
+
+---
+ Makefile | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 506e376..de17b93 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1354,6 +1354,9 @@ all: modules
+ modules:
+ 	$(MAKE) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) -C $(KSRC) M=$(shell pwd)  modules
+ 
++modules_install:
++	$(MAKE) -C $(KERNEL_SRC) M=$(shell pwd) modules_install
++
+ strip:
+ 	$(CROSS_COMPILE)strip $(MODULE_NAME).ko --strip-unneeded
+ 
+-- 
+1.9.1
+

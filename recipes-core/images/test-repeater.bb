@@ -19,6 +19,7 @@ IMAGE_INSTALL_append := " \
 
 IMAGE_INSTALL_append := " \
         kernel-modules \
+        wifi-wl0084e \
         openssh-sshd \
         openssh-ssh \
         openssh-sftp-server \
@@ -66,5 +67,3 @@ IMAGE_INSTALL_append := " \
 "
 
 IMAGE_FEATURES_append := " package-management tools-profile"
-
-PREFERRED_VERSION_linux-raspberrypi := "4.4%"
