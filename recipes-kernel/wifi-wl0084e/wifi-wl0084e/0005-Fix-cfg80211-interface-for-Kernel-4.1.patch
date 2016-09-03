@@ -1,0 +1,53 @@
+From 6bdc941a9c8c9a84225a44b672ff41ffbe81600c Mon Sep 17 00:00:00 2001
+From: Manuel Huber <Manuel.h87@gmail.com>
+Date: Sat, 3 Sep 2016 16:09:55 +0200
+Subject: [PATCH 5/5] Fix cfg80211 interface for Kernel 4.1
+
+---
+ os_dep/linux/ioctl_cfg80211.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/os_dep/linux/ioctl_cfg80211.c b/os_dep/linux/ioctl_cfg80211.c
+index 6310071..c9f8e6c 100644
+--- a/os_dep/linux/ioctl_cfg80211.c
++++ b/os_dep/linux/ioctl_cfg80211.c
+@@ -24,6 +24,7 @@
+ #ifdef CONFIG_IOCTL_CFG80211
+ 
+ #include <rtw_wifi_regd.h>
++#include <linux/nl80211.h>
+ 
+ #define RTW_MAX_MGMT_TX_CNT (8)
+ #define RTW_MAX_MGMT_TX_MS_GAS (500)
+@@ -1763,16 +1764,16 @@ static int cfg80211_rtw_get_station(struct wiphy *wiphy, struct net_device *ndev
+ 			goto exit;
+ 		}
+ 
+-		sinfo->filled |= STATION_INFO_SIGNAL;
++		sinfo->filled |= BIT(NL80211_STA_INFO_SIGNAL);
+ 		sinfo->signal = translate_percentage_to_dbm(padapter->recvpriv.signal_strength);
+ 
+-		sinfo->filled |= STATION_INFO_TX_BITRATE;
++		sinfo->filled |= BIT(NL80211_STA_INFO_TX_BITRATE);
+ 		sinfo->txrate.legacy = rtw_get_cur_max_rate(padapter);
+ 
+-		sinfo->filled |= STATION_INFO_RX_PACKETS;
++		sinfo->filled |= BIT(NL80211_STA_INFO_RX_PACKETS);
+ 		sinfo->rx_packets = sta_rx_data_pkts(psta);
+ 
+-		sinfo->filled |= STATION_INFO_TX_PACKETS;
++		sinfo->filled |= BIT(NL80211_STA_INFO_TX_PACKETS);
+ 		sinfo->tx_packets = psta->sta_stats.tx_pkts;
+ 
+ 	}
+@@ -3497,7 +3498,6 @@ void rtw_cfg80211_indicate_sta_assoc(_adapter *padapter, u8 *pmgmt_frame, uint f
+ 			ie_offset = _REASOCREQ_IE_OFFSET_;
+ 	
+ 		sinfo.filled = 0;
+-		sinfo.filled = STATION_INFO_ASSOC_REQ_IES;
+ 		sinfo.assoc_req_ies = pmgmt_frame + WLAN_HDR_A3_LEN + ie_offset;
+ 		sinfo.assoc_req_ies_len = frame_len - WLAN_HDR_A3_LEN - ie_offset;
+ 		cfg80211_new_sta(ndev, GetAddr2Ptr(pmgmt_frame), &sinfo, GFP_ATOMIC);
+-- 
+1.9.1
+

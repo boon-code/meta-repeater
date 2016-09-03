@@ -1,7 +1,7 @@
 From 76358b30940ee0f9bda2e7016dbca4bedeeb5676 Mon Sep 17 00:00:00 2001
 From: Manuel Huber <Manuel.h87@gmail.com>
 Date: Mon, 29 Aug 2016 23:34:53 +0200
-Subject: [PATCH 3/3] Add modules_install rule
+Subject: [PATCH 3/5] Add modules_install rule
 
 ---
  Makefile | 3 +++

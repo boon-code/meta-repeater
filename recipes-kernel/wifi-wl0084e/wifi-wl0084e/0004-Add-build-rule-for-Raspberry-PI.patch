@@ -1,0 +1,44 @@
+From b3e3cd0cb9af7cfd7ce006c971541537630d6e9b Mon Sep 17 00:00:00 2001
+From: Manuel Huber <Manuel.h87@gmail.com>
+Date: Sat, 3 Sep 2016 16:09:25 +0200
+Subject: [PATCH 4/5] Add build rule for Raspberry PI
+
+---
+ Makefile | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index de17b93..dfc0622 100644
+--- a/Makefile
++++ b/Makefile
+@@ -65,7 +65,8 @@ CONFIG_AP_WOWLAN = n
+ ######### Notify SDIO Host Keep Power During Syspend ##########
+ CONFIG_RTW_SDIO_PM_KEEP_POWER = y
+ ###################### Platform Related #######################
+-CONFIG_PLATFORM_I386_PC = y
++CONFIG_PLATFORM_I386_PC = n
++CONFIG_PLATFORM_RASPBERRY_PI = y
+ CONFIG_PLATFORM_ANDROID_X86 = n
+ CONFIG_PLATFORM_JB_X86 = n
+ CONFIG_PLATFORM_ARM_S3C2K4 = n
+@@ -773,6 +774,17 @@ MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
+ INSTALL_PREFIX :=
+ endif
+ 
++ifeq ($(CONFIG_PLATFORM_RASPBERRY_PI), y)
++EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
++EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE
++EXTRA_CFLAGS += -DCONFIG_IOCTL_CFG80211 -DRTW_USE_CFG80211_STA_EVENT
++EXTRA_CFLAGS += -DCONFIG_P2P_IPS
++ARCH ?= arm
++CROSS_COMPILE ?=
++KSRC := $(KERNEL_SRC)
++endif
++
++
+ ifeq ($(CONFIG_PLATFORM_ACTIONS_ATM702X), y)
+ EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN -DCONFIG_PLATFORM_ANDROID -DCONFIG_PLATFORM_ACTIONS_ATM702X
+ #ARCH := arm
+-- 
+1.9.1
+

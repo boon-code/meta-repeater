@@ -1,7 +1,7 @@
 From 91a5bb5fe6d4f584a399c45b5a449fa9bcd5fe54 Mon Sep 17 00:00:00 2001
 From: Manuel Huber <Manuel.h87@gmail.com>
 Date: Mon, 29 Aug 2016 23:20:23 +0200
-Subject: [PATCH 2/3] Fix compile errors
+Subject: [PATCH 2/5] Fix compile errors
 
 ---
  core/rtw_debug.c           | 2 +-
