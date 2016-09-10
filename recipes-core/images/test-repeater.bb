@@ -30,13 +30,17 @@ IMAGE_INSTALL_append := " \
         python3-pip \
         dnsmasq \
         wireless-tools \
+        iw \
+        hostapd \
+        connman \
         vim \
         bash \
         bash-completion \
-        hostapd \
         go-helloworld \
         user-pi \
         usbutils \
+        docker \
+        ldd \
 "
 
 IMAGE_INSTALL_append := " \
