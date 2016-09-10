@@ -11,6 +11,7 @@ SRC_URI = "file://rtl8188EUS_linux_v4.3.0.8_13968.20150417.tar.gz \
            file://0003-Add-modules_install-rule.patch \
            file://0004-Add-build-rule-for-Raspberry-PI.patch \
            file://0005-Fix-cfg80211-interface-for-Kernel-4.1.patch \
+           file://8188eu.conf \
 "
 
 S = "${WORKDIR}/rtl8188EUS_linux_v4.3.0.8_13968.20150417"
@@ -18,3 +19,10 @@ S = "${WORKDIR}/rtl8188EUS_linux_v4.3.0.8_13968.20150417"
 do_configure_prepend() {
     cp "${WORKDIR}/COPYING" "${S}/COPYING"
 }
+
+do_install_prepend() {
+    install -d ${D}${sysconfdir}/modprobe.d
+    install -m 0644 ${WORKDIR}/8188eu.conf ${D}${sysconfdir}/modprobe.d
+}
+
+FILES_${PN} += "${sysconfdir}/modprobe.d/8188eu.conf"
