@@ -33,6 +33,7 @@ IMAGE_INSTALL_append := " \
         iw \
         hostapd \
         connman \
+        connman-client \
         vim \
         bash \
         bash-completion \
