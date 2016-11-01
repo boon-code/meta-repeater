@@ -42,6 +42,8 @@ IMAGE_INSTALL_append := " \
         usbutils \
         docker \
         ldd \
+        crda \
+        wireless-regdb \
 "
 
 IMAGE_INSTALL_append := " \
