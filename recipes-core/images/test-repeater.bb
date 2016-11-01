@@ -44,6 +44,7 @@ IMAGE_INSTALL_append := " \
         ldd \
         crda \
         wireless-regdb \
+        linux-firmware-brcm43430 \
 "
 
 IMAGE_INSTALL_append := " \
