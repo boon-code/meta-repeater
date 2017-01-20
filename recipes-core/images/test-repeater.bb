@@ -59,6 +59,7 @@ IMAGE_INSTALL_append := " \
         iperf3 \
         netcat \
         socat \ 
+        i2c-tools \
 "
 
 # file system utilities
@@ -69,7 +70,6 @@ IMAGE_INSTALL_append := " \
         e2fsprogs-mke2fs \
         e2fsprogs-tune2fs \
         f2fs-tools \
-        yaffs2-utils \
         logfsprogs \
         nfs-utils \
 "
