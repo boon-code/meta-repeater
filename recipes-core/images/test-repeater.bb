@@ -54,7 +54,7 @@ IMAGE_INSTALL_append := " \
         git \
         git-perltools \
         strace \ 
-        picocom \
+        minicom \
         iperf \ 
         iperf3 \
         netcat \
