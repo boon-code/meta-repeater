@@ -37,14 +37,11 @@ IMAGE_INSTALL_append := " \
         vim \
         bash \
         bash-completion \
-        go-helloworld \
         user-pi \
         usbutils \
-        docker \
         ldd \
         crda \
         wireless-regdb \
-        linux-firmware-brcm43430 \
 "
 
 IMAGE_INSTALL_append := " \
