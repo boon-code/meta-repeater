@@ -19,7 +19,6 @@ IMAGE_INSTALL_append := " \
 
 IMAGE_INSTALL_append := " \
         kernel-modules \
-        wifi-wl0084e \
         openssh-sshd \
         openssh-ssh \
         openssh-sftp-server \
@@ -67,7 +66,6 @@ IMAGE_INSTALL_append := " \
         e2fsprogs-mke2fs \
         e2fsprogs-tune2fs \
         f2fs-tools \
-        logfsprogs \
         nfs-utils \
 "
 
