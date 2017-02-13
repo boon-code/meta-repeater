@@ -28,19 +28,20 @@ IMAGE_INSTALL_append := " \
         python3 \
         python3-pip \
         dnsmasq \
-        wireless-tools \
-        iw \
-        hostapd \
-        connman \
-        connman-client \
         vim \
         bash \
         bash-completion \
         user-pi \
         usbutils \
         ldd \
+        iw \
+        hostapd \
+        connman \
+        connman-client \
         crda \
         wireless-regdb \
+        wireless-tools \
+        linux-firmware-bcm43430 \
 "
 
 IMAGE_INSTALL_append := " \
