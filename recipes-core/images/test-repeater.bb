@@ -40,6 +40,10 @@ IMAGE_INSTALL_append := " \
         wireless-regdb \
         wireless-tools \
         linux-firmware-brcm43430 \
+        perl \
+        curl \
+        openssl \
+        openssl-misc \
 "
 
 IMAGE_INSTALL_append := " \
