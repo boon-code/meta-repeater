@@ -25,8 +25,6 @@ IMAGE_INSTALL_append := " \
         openssh-scp \
         tmux \
         kmod \
-        python3 \
-        python3-pip \
         dnsmasq \
         vim \
         bash \
@@ -57,6 +55,15 @@ IMAGE_INSTALL_append := " \
         netcat \
         socat \ 
         i2c-tools \
+"
+
+IMAGE_INSTALL_append := " \
+        python3 \
+        python3-modules \
+        python3-pip \
+        python3-multiprocessing \
+        python3-asyncio \
+        python3-io \
 "
 
 # file system utilities
