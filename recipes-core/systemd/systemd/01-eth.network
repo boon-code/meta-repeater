@@ -1,0 +1,15 @@
+[Match]
+Path=platform-3f980000.usb-usb-0:1.1:1.0
+
+[Network]
+LinkLocalAddressing=no
+Address=192.168.5.2/24
+DHCPServer=yes
+
+[Route]
+Gateway=192.168.5.2
+Metric=0
+Scope=host
+
+[DHCPServer]
+PoolSize=100
