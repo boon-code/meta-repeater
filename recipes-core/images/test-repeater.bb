@@ -38,11 +38,16 @@ IMAGE_INSTALL_append := " \
         crda \
         wireless-regdb \
         wireless-tools \
-        linux-firmware-brcm43430 \
+        linux-firmware-bcm43430 \
         perl \
         curl \
         openssl \
         openssl-misc \
+"
+
+IMAGE_INSTALL_append := " \
+        mpd \
+        ffmpeg \
 "
 
 IMAGE_INSTALL_append := " \
@@ -54,7 +59,6 @@ IMAGE_INSTALL_append := " \
         git-perltools \
         strace \ 
         minicom \
-        iperf \ 
         iperf3 \
         netcat \
         socat \ 
