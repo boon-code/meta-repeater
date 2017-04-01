@@ -1,5 +1,0 @@
-[Match]
-Path=platform-3f300000.mmc
-
-[Network]
-LinkLocalAddressing=no
