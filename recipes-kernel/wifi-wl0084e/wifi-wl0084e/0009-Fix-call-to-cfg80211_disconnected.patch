@@ -1,0 +1,37 @@
+From 03d177aa8dc9189002e0233cad0174d6de26fd1b Mon Sep 17 00:00:00 2001
+From: Manuel Huber <Manuel.h87@gmail.com>
+Date: Sat, 1 Apr 2017 18:45:19 +0200
+Subject: [PATCH 09/10] Fix call to cfg80211_disconnected
+
+An additional parameter was introduced (locally_generated).
+Keep old behavior by setting it to false (this might be wrong).
+---
+ os_dep/linux/ioctl_cfg80211.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/os_dep/linux/ioctl_cfg80211.c b/os_dep/linux/ioctl_cfg80211.c
+index c9f8e6c..7251fa8 100644
+--- a/os_dep/linux/ioctl_cfg80211.c
++++ b/os_dep/linux/ioctl_cfg80211.c
+@@ -904,11 +904,16 @@ void rtw_cfg80211_indicate_disconnect(_adapter *padapter)
+ 		DBG_8192C("pwdev->sme_state(a)=%d\n", pwdev->sme_state);
+ 		#else
+ 
+-		if(check_fwstate(&padapter->mlmepriv, _FW_LINKED))
++		if(check_fwstate(&padapter->mlmepriv, _FW_LINKED)) {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,2,0)
+ 			cfg80211_disconnected(padapter->pnetdev, 0, NULL, 0, GFP_ATOMIC);
+-		else
++#else
++			cfg80211_disconnected(padapter->pnetdev, 0, NULL, 0, false, GFP_ATOMIC);
++#endif
++		} else {
+ 			cfg80211_connect_result(padapter->pnetdev, NULL, NULL, 0, NULL, 0,
+ 				WLAN_STATUS_UNSPECIFIED_FAILURE, GFP_ATOMIC/*GFP_KERNEL*/);
++		}
+ 		#endif
+ 	}
+ }
+-- 
+1.9.1
+

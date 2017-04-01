@@ -1,0 +1,89 @@
+From dba109b722df0f54aaeec8f990a92a2947e992ba Mon Sep 17 00:00:00 2001
+From: Manuel Huber <Manuel.h87@gmail.com>
+Date: Sun, 2 Apr 2017 00:33:01 +0200
+Subject: [PATCH 10/10] Adapt to parameter changes in cfg80211
+
+Some function's parameters have changed in `struct cfg80211_ops`:
+- add_virtual_intf: Added parameter `name_assign_type`
+- del_station: Changed `mac` to a `struct station_del_parameters *param`
+  which contains the mac address.
+---
+ os_dep/linux/ioctl_cfg80211.c | 32 ++++++++++++++++++++------------
+ 1 file changed, 20 insertions(+), 12 deletions(-)
+
+diff --git a/os_dep/linux/ioctl_cfg80211.c b/os_dep/linux/ioctl_cfg80211.c
+index 7251fa8..a11a1a1 100644
+--- a/os_dep/linux/ioctl_cfg80211.c
++++ b/os_dep/linux/ioctl_cfg80211.c
+@@ -3888,13 +3888,16 @@ static struct net_device *
+ #else
+ static int
+ #endif
+-	cfg80211_rtw_add_virtual_intf(
++cfg80211_rtw_add_virtual_intf(
+ 		struct wiphy *wiphy,
+-	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,7,0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3,7,0))
+ 		const char *name,
+-	#else
++#else
+ 		char *name,
+-	#endif
++#endif
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,0,0))
++		unsigned char name_assign_type,
++#endif
+ 		enum nl80211_iftype type, u32 *flags, struct vif_params *params)
+ {
+ 	int ret = 0;
+@@ -4192,8 +4195,10 @@ static int	cfg80211_rtw_add_station(struct wiphy *wiphy, struct net_device *ndev
+ static int	cfg80211_rtw_del_station(struct wiphy *wiphy, struct net_device *ndev,
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(3,16,0))
+ 	u8 *mac
+-#else
++#elif (LINUX_VERSION_CODE < KERNEL_VERSION(3,18,0))
+ 	const u8 *mac
++#else
++	struct station_del_parameters *param
+ #endif
+ )
+ {
+@@ -4205,6 +4210,9 @@ static int	cfg80211_rtw_del_station(struct wiphy *wiphy, struct net_device *ndev
+ 	_adapter *padapter = (_adapter *)rtw_netdev_priv(ndev);
+ 	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
+ 	struct sta_priv *pstapriv = &padapter->stapriv;
++#if (LINUX_VERSION_CODE > KERNEL_VERSION(3,18,0))
++	const u8 *mac = NULL;
++#endif
+ 
+ 	DBG_871X("+"FUNC_NDEV_FMT"\n", FUNC_NDEV_ARG(ndev));
+ 
+@@ -4214,18 +4222,18 @@ static int	cfg80211_rtw_del_station(struct wiphy *wiphy, struct net_device *ndev
+ 		return -EINVAL;		
+ 	}
+ 
++#if (LINUX_VERSION_CODE > KERNEL_VERSION(3,18,0))
++	if (param && param->mac) {
++		mac = param->mac;
++	}
++#endif
+ 
+-	if(!mac)
+-	{
++	if(!mac) {
+ 		DBG_8192C("flush all sta, and cam_entry\n");
+-
+ 		flush_all_cam_entry(padapter);	//clear CAM
+-
+ 		ret = rtw_sta_flush(padapter);
+-		
+ 		return ret;
+-	}	
+-
++	}
+ 
+ 	DBG_8192C("free sta macaddr =" MAC_FMT "\n", MAC_ARG(mac));
+ 
+-- 
+1.9.1
+

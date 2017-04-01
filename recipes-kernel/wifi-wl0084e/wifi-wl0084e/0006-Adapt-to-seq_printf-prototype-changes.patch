@@ -1,0 +1,34 @@
+From 36b922a434175c805aebbd8ed1654d7bf2053baa Mon Sep 17 00:00:00 2001
+From: Manuel Huber <Manuel.h87@gmail.com>
+Date: Sat, 1 Apr 2017 13:27:44 +0200
+Subject: [PATCH 06/10] Adapt to seq_printf prototype changes
+
+---
+ include/rtw_debug.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/rtw_debug.h b/include/rtw_debug.h
+index bf36357..51b1be4 100644
+--- a/include/rtw_debug.h
++++ b/include/rtw_debug.h
+@@ -227,7 +227,7 @@ extern void rtl871x_cedbg(const char *fmt, ...);
+ 		if (sel == RTW_DBGDUMP)\
+ 			_DBG_871X_LEVEL(_drv_always_, fmt, ##arg); \
+ 		else {\
+-			if(_seqdump(sel, fmt, ##arg)) /*rtw_warn_on(1)*/; \
++			_seqdump(sel, fmt, ##arg); \
+ 		} \
+ 	}while(0)
+ 
+@@ -237,7 +237,7 @@ extern void rtl871x_cedbg(const char *fmt, ...);
+ 		if (sel == RTW_DBGDUMP)\
+ 			DBG_871X_LEVEL(_drv_always_, fmt, ##arg); \
+ 		else {\
+-			if(_seqdump(sel, fmt, ##arg)) /*rtw_warn_on(1)*/; \
++			_seqdump(sel, fmt, ##arg); \
+ 		} \
+ 	}while(0)
+ 
+-- 
+1.9.1
+

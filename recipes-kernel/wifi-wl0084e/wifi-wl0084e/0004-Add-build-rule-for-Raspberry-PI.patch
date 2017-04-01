@@ -1,7 +1,7 @@
-From b3e3cd0cb9af7cfd7ce006c971541537630d6e9b Mon Sep 17 00:00:00 2001
+From 12330b1254487d0242de3fe77a9bbbbac867c310 Mon Sep 17 00:00:00 2001
 From: Manuel Huber <Manuel.h87@gmail.com>
 Date: Sat, 3 Sep 2016 16:09:25 +0200
-Subject: [PATCH 4/5] Add build rule for Raspberry PI
+Subject: [PATCH 04/10] Add build rule for Raspberry PI
 
 ---
  Makefile | 14 +++++++++++++-

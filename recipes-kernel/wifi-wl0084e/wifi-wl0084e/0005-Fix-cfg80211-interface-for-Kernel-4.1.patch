@@ -1,7 +1,7 @@
-From 6bdc941a9c8c9a84225a44b672ff41ffbe81600c Mon Sep 17 00:00:00 2001
+From 84b878df26a4d461be52a562ce66f54f508f36b4 Mon Sep 17 00:00:00 2001
 From: Manuel Huber <Manuel.h87@gmail.com>
 Date: Sat, 3 Sep 2016 16:09:55 +0200
-Subject: [PATCH 5/5] Fix cfg80211 interface for Kernel 4.1
+Subject: [PATCH 05/10] Fix cfg80211 interface for Kernel 4.1
 
 ---
  os_dep/linux/ioctl_cfg80211.c | 10 +++++-----
