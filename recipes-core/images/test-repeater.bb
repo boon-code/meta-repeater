@@ -48,6 +48,7 @@ IMAGE_INSTALL_append := " \
 IMAGE_INSTALL_append := " \
         htop \
         gcc \ 
+        cmake \
         gdb \
         git \
         git-perltools \
@@ -78,6 +79,7 @@ IMAGE_INSTALL_append := " \
         e2fsprogs-tune2fs \
         f2fs-tools \
         nfs-utils \
+        btrfs-tools \
 "
 
 IMAGE_FEATURES_append := " package-management tools-profile"
