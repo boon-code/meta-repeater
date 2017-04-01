@@ -25,7 +25,6 @@ IMAGE_INSTALL_append := " \
         openssh-scp \
         tmux \
         kmod \
-        dnsmasq \
         vim \
         bash \
         bash-completion \
