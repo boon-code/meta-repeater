@@ -47,6 +47,12 @@ IMAGE_INSTALL_append := " \
 "
 
 IMAGE_INSTALL_append := " \
+        packagegroup-self-hosted-extended \
+        packagegroup-self-hosted-sdk \
+        packagegroup-self-hosted-debug \
+"
+
+IMAGE_INSTALL_append := " \
         mpd \
         ffmpeg \
 "
