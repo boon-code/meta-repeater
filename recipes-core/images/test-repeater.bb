@@ -39,6 +39,7 @@ IMAGE_INSTALL_append := " \
         wireless-regdb \
         wireless-tools \
         linux-firmware-bcm43430 \
+        linux-firmware-ralink \
         perl \
         curl \
         openssl \
