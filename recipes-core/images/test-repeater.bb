@@ -82,7 +82,6 @@ IMAGE_INSTALL_append := " \
         e2fsprogs-resize2fs \
         e2fsprogs-mke2fs \
         e2fsprogs-tune2fs \
-        f2fs-tools \
         nfs-utils \
         btrfs-tools \
 "
