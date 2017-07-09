@@ -120,6 +120,8 @@ RDEPENDS_packagegroup-build-host-extended = " \
         perl-modules \
         perl-pod \
         perl-misc \
+        glibc-binary-localedata-en-us \
+        glibc-binary-localedata-de-at \
         python \
         python-modules \
         python-git \
