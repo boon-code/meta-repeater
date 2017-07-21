@@ -80,6 +80,10 @@ IMAGE_INSTALL_append := " \
         python3-io \
 "
 
+IMAGE_INSTALL_append := " \
+        python3-shopbot \
+"
+
 # file system utilities
 IMAGE_INSTALL_append := " \
         dosfstools \
