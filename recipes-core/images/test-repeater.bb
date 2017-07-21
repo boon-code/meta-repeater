@@ -84,6 +84,10 @@ IMAGE_INSTALL_append := " \
         python3-shopbot \
 "
 
+IMAGE_INSTALL_append := " \
+        docker \
+"
+
 # file system utilities
 IMAGE_INSTALL_append := " \
         dosfstools \
