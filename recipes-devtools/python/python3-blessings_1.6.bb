@@ -1,7 +1,7 @@
 DESCRIPTION = "A thin, practical wrapper around terminal coloring, styling, and positioning"
 HOMEPAGE = "https://github.com/erikrose/blessings"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=e6eeaabc92cfc2d03f53e789324d7292"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=4c36985b553d025e4fe770308d00ed39"
 
 inherit pypi setuptools3
 
