@@ -44,6 +44,7 @@ IMAGE_INSTALL_append := " \
         curl \
         openssl \
         openssl-misc \
+        tcpdump \
 "
 
 IMAGE_INSTALL_append := " \
