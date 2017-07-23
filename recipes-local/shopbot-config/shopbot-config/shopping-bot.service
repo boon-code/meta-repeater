@@ -1,0 +1,19 @@
+[Unit]
+Description=Shopping Bot
+RequiresMountsFor=/var/lib/shopbot
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+ProtectSystem=strict
+ProtectKernelTunables=true
+PrivateDevices=true
+ProtectControlGroups=true
+ReadWritePaths=/var/lib/shopbot
+EnvironmentFile=/etc/shopbot/config
+WorkingDirectory=/var/lib/shopbot
+ExecStart=/usr/bin/shoppingbot --verbose $TOKEN
+
+[Install]
+WantedBy=multi-user.target
