@@ -7,8 +7,8 @@ inherit setuptools3 gitpkgv
 
 SRC_URI = "git://github.com/nickoala/telepot.git;protocol=https"
 
-SRCREV = "aad059b9c61b586132a92b637de3e5b72e28b18a"
-PV = "1.0+gitr${SRCPV}"
+SRCREV = "8da5bc53e0f46a0bb07e88e0d4cc6e8d703143dd"
+PV = "12.1+gitr${SRCPV}"
 PKGV = "${GITPKGVTAG}"
 
 S = "${WORKDIR}/git"
