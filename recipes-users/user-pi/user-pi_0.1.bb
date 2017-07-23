@@ -8,7 +8,7 @@ inherit useradd
 
 # Generated using following command:
 # python3 -c 'import sys;import crypt; import getpass;print(crypt.crypt(getpass.getpass("Password: ", sys.stderr)).replace("$", "\\$"))'
-USR_PASSWORD ?= "\$6\$fTeCH9TndeyGSHKw\$ui/hoIik9XB.nLsEJNt/AxESjNa7op37isl/gbmv.9rLqPmscqQ6FBEkeAOGf8f9zRcKzCZRf1.0UmUIZ0CSr0"
+USR_PASSWORD ?= "\$6\$Cr7cSXZYZ2TkwURs\$k/tSO2EwB3Jef1IJoCOgsp3ffziABNSi6jITGpAlYUX4/wZptslrLLTQLWUs1m9vkAt.PJoO0Xd9gzsa93ZGo1"
 
 USR_NAME := "pi"
 USR_HOME := "/home/${USR_NAME}"
