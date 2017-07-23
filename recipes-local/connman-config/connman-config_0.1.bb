@@ -7,7 +7,9 @@ require conf/local-data.inc
 
 RDEPENDS_${PN} = "connman"
 
-SRC_URI = "${LOCALURI}/connman-config.tar.gz"
+SRC_URI = " \
+    ${LOCALURI}/connman-settings \
+    ${LOCALURI}/connman-config.tar.gz"
 
 S = "${WORKDIR}/connman-config"
 
@@ -22,5 +24,5 @@ do_install() {
         install -m 0600 ${S}/$dir/* ${D}${CM_CFGDIR}/$dir/
     done
 
-    install -m 0600 ${S}/settings ${D}${CM_CFGDIR}/
+    install -m 0600 ${LOCAL_ABSPATH}/connman-settings ${D}${CM_CFGDIR}/settings
 }
