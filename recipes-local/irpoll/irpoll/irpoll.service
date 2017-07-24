@@ -1,0 +1,14 @@
+[Unit]
+Description=IR receiver script for RPI
+RequiresMountsFor=/var/lib/irpoll
+BindTo=sys-devices-virtual-ttyirusb.device
+StopWhenUnneeded=yes
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/irpoll
+ExecStart=/usr/bin/python3 /usr/sbin/irpoll.py --bot-config /var/lib/irpoll/irpoll-config.json --no-welcome --no-stdin
+KillSignal=SIGINT
+
+[Install]
+WantedBy=sys-devices-virtual-ttyirusb.device

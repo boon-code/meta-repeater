@@ -1,0 +1,1 @@
+SUBSYSTEM=="tty", DRIVERS=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="204b", ATTRS{product}=="IR LUFA USB-RS232 Adapter", SYMLINK+="ttyIRUSB", TAG+="systemd", ENV{SYSTEMD_ALIAS}="/sys/devices/virtual/ttyirusb"
