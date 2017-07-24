@@ -7,3 +7,6 @@ RequiresMountsFor=/var/lib/epub
 [Service]
 Type=oneshot
 ExecStart=/usr/sbin/epub-install.sh
+
+[Install]
+WantedBy=multi-user.target
