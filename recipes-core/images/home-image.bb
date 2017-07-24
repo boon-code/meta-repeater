@@ -5,4 +5,5 @@ require test-image.inc
 IMAGE_INSTALL_append = " \
     connman-config \
     shopbot-config \
+    epubd \
 "
