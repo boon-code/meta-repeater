@@ -1,0 +1,9 @@
+[Unit]
+Description=Installs epubd docker image and starts it
+ConditionPathExists=!/var/lib/epub/install.done
+After=docker.service
+RequiresMountsFor=/var/lib/epub
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/epub-install.sh

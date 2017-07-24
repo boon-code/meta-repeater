@@ -1,0 +1,6 @@
+[Unit]
+Description=Trigger upstream check for e-books to convert
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/epub-trigger.sh
