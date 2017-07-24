@@ -12,6 +12,8 @@ do_install() {
     install ${LOCAL_ABSPATH}/epubd.tar.gz ${D}/opt/
 }
 
+FILES_${PN} += " /opt "
+
 pkg_postinst_${PN}() {
     if [ "x$D" = "x" ]; then
         zcat /opt/epubd.tar.gz | docker load
