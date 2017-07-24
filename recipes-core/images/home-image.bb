@@ -6,4 +6,5 @@ IMAGE_INSTALL_append = " \
     connman-config \
     shopbot-config \
     epubd \
+    irpoll \
 "
