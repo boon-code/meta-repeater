@@ -18,14 +18,14 @@ RDEPENDS_${PN} = " \
 SYSTEMD_SERVICE_${PN} = "irpoll.service"
 
 SRC_URI = " \
-    git://github.com/boon-code/rpi-ir.git;protocol=https;branch=dev \
+    git://github.com/boon-code/rpi-ir.git;protocol=https;branch=master \
     file://irpoll.service \
     file://90-irpoll-usb-device.rules \
     ${LOCALURI}/irpoll-config.json \
     ${LOCALURI}/irpoll-users.json \
 "
 
-SRCREV = "846f22d6b375c424d73511fe74010231389d5521"
+SRCREV = "9e9cecb7a4fd9c5df0f7fbf7f5bc9b107dd0b253"
 
 S = "${WORKDIR}/git"
 
