@@ -27,7 +27,8 @@ do_install() {
 
     install -d -m 0755 ${D}${systemd_system_unitdir}/
     install -d -m 0755 ${D}${EPUB_STATE_DIR}
-    install -m 0644 ${WORKDIR}/epub-trigger.* ${D}${systemd_system_unitdir}/
+    install -m 0644 ${WORKDIR}/epub-trigger.timer ${D}${systemd_system_unitdir}/
+    install -m 0644 ${WORKDIR}/epub-trigger.service ${D}${systemd_system_unitdir}/
     install -m 0644 ${WORKDIR}/epub-install.service ${D}${systemd_system_unitdir}/
     install -d -m 0755 ${D}${sbindir}
     install -m 0755 ${WORKDIR}/epub-trigger.sh ${D}${sbindir}/
