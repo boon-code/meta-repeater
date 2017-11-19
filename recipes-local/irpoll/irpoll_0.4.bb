@@ -25,7 +25,7 @@ SRC_URI = " \
     ${LOCALURI}/irpoll-users.json \
 "
 
-SRCREV = "9e9cecb7a4fd9c5df0f7fbf7f5bc9b107dd0b253"
+SRCREV = "1b1453a1a0d3ae6ff0cd16f35fe272fbb01b00bb"
 
 S = "${WORKDIR}/git"
 
